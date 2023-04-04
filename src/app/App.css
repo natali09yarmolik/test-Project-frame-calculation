@@ -1,0 +1,15 @@
+.App {
+  width: 1200px;
+  height: 100vh;
+  margin: 0 auto;
+}
+h1{
+  margin: 0 auto;
+  text-align: center;
+}
+.calculator{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
