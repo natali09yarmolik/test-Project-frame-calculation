@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/test-Project-frame-calculation/static/css/main.7eb86cdf.css",
+    "main.js": "/test-Project-frame-calculation/static/js/main.869f94ee.js",
+    "static/js/787.cd7d7d7f.chunk.js": "/test-Project-frame-calculation/static/js/787.cd7d7d7f.chunk.js",
+    "index.html": "/test-Project-frame-calculation/index.html",
+    "main.7eb86cdf.css.map": "/test-Project-frame-calculation/static/css/main.7eb86cdf.css.map",
+    "main.869f94ee.js.map": "/test-Project-frame-calculation/static/js/main.869f94ee.js.map",
+    "787.cd7d7d7f.chunk.js.map": "/test-Project-frame-calculation/static/js/787.cd7d7d7f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7eb86cdf.css",
+    "static/js/main.869f94ee.js"
+  ]
+}
