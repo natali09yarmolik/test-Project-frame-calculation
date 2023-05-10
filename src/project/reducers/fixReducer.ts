@@ -1,14 +1,11 @@
+import {FixType} from "project/types";
+
 const InitialState = {
     fix: {} as FixType,
     countFix: 0,
     priceFix: 0,
 }
-export type FixType = {
-    type: string,
-    name: string,
-    unit: string,
-    price: number,
-}
+
 
 type InitialStateType = typeof InitialState
 

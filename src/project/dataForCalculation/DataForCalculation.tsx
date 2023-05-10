@@ -2,29 +2,32 @@ import data from '../../data/data.json'
 import config from '../../data/config.json'
 import {ChangeEvent, MouseEvent, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {calculateCountLists} from "../../utils/calculateCountLists";
-import {ListType, setCountAndPriceListAC, setListAC} from "../reducers/listReducer";
-import {AppRootStateType} from "../../app/store";
-import {PipeType, setCountAndPricePipeAC, setPipeAC} from "../reducers/pipeReducer";
-import {calculateCountPipes} from "../../utils/calculateCountPipes";
-import {calculateCountFix} from "../../utils/calculateCountFix";
+import {calculateCountLists} from "utils/calculateCountLists";
+import {setCountAndPriceListAC, setListAC} from "../reducers/listReducer";
+import {AppRootStateType, useAppSelector} from "app/store";
+import {setCountAndPricePipeAC, setPipeAC} from "../reducers/pipeReducer";
+import {calculateCountPipes} from "utils/calculateCountPipes";
+import {calculateCountFix} from "utils/calculateCountFix";
 import {setCountAndPriceFixAC, setFixAC} from "../reducers/fixReducer";
-import {square} from "../../utils/square";
-import {countPipeWidth} from "../../utils/countPipeWidth";
-import {countPipeLength} from "../../utils/countPipeLength";
-import {calculateCellsSize} from "../../utils/countCells";
+import {square} from "utils/square";
+import {countPipeWidth} from "utils/countPipeWidth";
+import {countPipeLength} from "utils/countPipeLength";
+import {calculateCellsSize} from "utils/countCells";
 import {setSizeCellsAC, setSquareAC} from "../reducers/resultReducer";
 import s from "./DataForCalculation.module.css"
-import {price} from "../../utils/price";
+import {price} from "utils/price";
+import {ListType, PipeType} from "project/types";
+import {SelectComponents} from "project/components/selectComponents";
+import {SizeComponents} from "project/components/sizeComponents";
 
 export const DataForCalculation = ()=>{
     const dispatch = useDispatch()
-    const priceList = useSelector<AppRootStateType, number>(state => state.list.list.price)
-    const widthList = useSelector<AppRootStateType, number>(state => state.list.list.width)
-    const materialList = useSelector<AppRootStateType, string>(state => state.list.list.material)
-    const widthPipe = useSelector<AppRootStateType, number>(state => state.pipe.pipe.width)
-    const pricePipe = useSelector<AppRootStateType, number>(state => state.pipe.pipe.price)
-    const priceFix = useSelector<AppRootStateType, number>(state => state.fix.fix.price)
+    const priceList = useSelector<AppRootStateType, number>(state => state.project.list.price)
+    const widthList = useSelector<AppRootStateType, number>(state => state.project.list.width)
+    const materialList = useSelector<AppRootStateType, string>(state => state.project.list.material)
+    const widthPipe = useSelector<AppRootStateType, number>(state => state.project.pipe.width)
+    const pricePipe = useSelector<AppRootStateType, number>(state => state.project.pipe.price)
+    const priceFix = useSelector<AppRootStateType, number>(state => state.project.fix.price)
 
     const [errorW, setErrorW] = useState ('')
     const [errorL, setErrorL] = useState ('')
@@ -133,24 +136,17 @@ export const DataForCalculation = ()=>{
                         </div>
                         <div className={s.chooseSelect}>
                             <div>
-                                <h3>Выберите лист</h3>
-                                <select name={'list'} onChange={handleChangeList}>
-                                    <option>{"Выберите лист"}</option>
-                                    {data.filter((list) => (list.type === 'list')).map((el, index) => (el.material === material as string
-                                        ? <option key={index} value={el.name}>{el.name}</option> : material === 'all'
-                                            ? <option key={index} value={el.name}>{el.name}</option> : ''))
-                                    }
-                                </select>
-                            </div>
+                                <SelectComponents name={'list'}
+                                                  handleChange={handleChangeList}
+                                                  type={'list'}
+                                                  material={material}
+                                                  title={"Выберите лист"}/>
+                             </div>
                             <div>
-                                <h3>Выберите трубу</h3>
-                                <select name={'pipe'} onChange={handleChangePipe}>
-                                    <option>{"Выберите трубу"}</option>
-                                    {data.map((pipe, index) => {
-                                        return pipe.type === 'pipe' ?
-                                            <option key={index} value={pipe.name}>{pipe.name}</option> : ''
-                                    })}
-                                </select>
+                               <SelectComponents name={'pipe'}
+                                                 handleChange={handleChangePipe}
+                                                 type={'pipe'}
+                                                 title={"Выберите трубу"}/>
                             </div>
                         </div>
                     </div>
@@ -165,24 +161,16 @@ export const DataForCalculation = ()=>{
                                     <p>максимальная: {maxLength} м</p></div>
                             </div>
                             <div className={s.inputSize}>
-                                <label><h3>Ширина</h3>
-                                    <input type={'number'}
-                                           className={inputParamW}
-                                           min={minWidth}
-                                           max={maxWidth}
-                                           placeholder={String(minWidth)}
-                                           onChange={handleChangeWidth}/>
-                                    , м
-                                </label>
-                                <label><h3>Длина</h3>
-                                    <input type={'number'}
-                                           className={inputParamL}
-                                           min={minLength}
-                                           max={maxLength}
-                                           placeholder={String(minLength)}
-                                           onChange={handleChangeLength}/>
-                                    , м
-                                </label>
+                                <SizeComponents title={'Ширина'}
+                                                className={inputParamW}
+                                                min={minWidth}
+                                                max={maxWidth}
+                                                onChange={handleChangeWidth}/>
+                                <SizeComponents title={'Длина'}
+                                                className={inputParamL}
+                                                min={minLength}
+                                                max={maxLength}
+                                                onChange={handleChangeLength}/>
                             </div>
                         </div>
                         <div>

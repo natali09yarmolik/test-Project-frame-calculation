@@ -1,3 +1,5 @@
+import {ListType} from "project/types";
+
 const InitialState = {
     list: {} as ListType,
     countList: 0,
@@ -6,14 +8,6 @@ const InitialState = {
 
 type InitialStateType = typeof InitialState
 
-export type ListType = {
-    type: string
-    name: string
-    material: string
-    unit: string
-    width: number
-    price: number
-}
 
 export const listReducer = (state: InitialStateType = InitialState,action: ActionsType) => {
     switch (action.type) {

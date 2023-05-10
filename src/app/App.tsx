@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import {DataForCalculation} from "../project/dataForCalculation/DataForCalculation";
-import {Result} from "../project/result/Result";
+import {DataForCalculation} from "project/dataForCalculation/DataForCalculation";
+import {Result} from "project/result/Result";
 
 function App() {
   return (

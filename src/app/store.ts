@@ -1,15 +1,10 @@
 import {combineReducers, legacy_createStore} from "redux";
-import {listReducer} from "../project/reducers/listReducer";
-import {pipeReducer} from "../project/reducers/pipeReducer";
-import {fixReducer} from "../project/reducers/fixReducer";
-import {resultReducer} from "../project/reducers/resultReducer";
 import {TypedUseSelectorHook, useSelector} from "react-redux";
+import {projectReducer} from "project/reducers/projectReducer";
 
 const rootReducer = combineReducers({
-  list: listReducer,
-  pipe: pipeReducer,
-  fix: fixReducer,
-  result: resultReducer,
+  project: projectReducer,
+
 })
 
 export const store = legacy_createStore(rootReducer)

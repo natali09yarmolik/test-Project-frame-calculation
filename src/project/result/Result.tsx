@@ -1,23 +1,23 @@
 import {useSelector} from "react-redux";
-import {AppRootStateType} from "../../app/store";
+import {AppRootStateType} from "app/store";
 import s from './Result.module.css'
 
 export const Result = () =>{
-    const nameList = useSelector<AppRootStateType, string>(state => state.list.list.name)
-    const unitList = useSelector<AppRootStateType, string>(state => state.list.list.unit)
-    const countList = useSelector<AppRootStateType, number>(state => state.list.countList)
-    const priceList = useSelector<AppRootStateType, number>(state => state.list.priceLists)
-    const namePipe = useSelector<AppRootStateType, string>(state => state.pipe.pipe.name)
-    const unitPipe = useSelector<AppRootStateType, string>(state => state.pipe.pipe.unit)
-    const countPipe = useSelector<AppRootStateType, number>(state => state.pipe.countPipe)
-    const pricePipe = useSelector<AppRootStateType, number>(state => state.pipe.pricePipes)
-    const nameFix = useSelector<AppRootStateType, string>(state => state.fix.fix.name)
-    const unitFix = useSelector<AppRootStateType, string>(state => state.fix.fix.unit)
-    const countFix = useSelector<AppRootStateType, number>(state => state.fix.countFix)
-    const priceFixes = useSelector<AppRootStateType, number>(state => state.fix.priceFix)
-    const square = useSelector<AppRootStateType, number>(state => state.result.square)
-    const cellW = useSelector<AppRootStateType, number>(state => state.result.cellWidth)
-    const cellL = useSelector<AppRootStateType, number>(state => state.result.cellLength)
+    const nameList = useSelector<AppRootStateType, string>(state => state.project.list.name)
+    const unitList = useSelector<AppRootStateType, string>(state => state.project.list.unit)
+    const countList = useSelector<AppRootStateType, number>(state => state.project.countList)
+    const priceList = useSelector<AppRootStateType, number>(state => state.project.priceLists)
+    const namePipe = useSelector<AppRootStateType, string>(state => state.project.pipe.name)
+    const unitPipe = useSelector<AppRootStateType, string>(state => state.project.pipe.unit)
+    const countPipe = useSelector<AppRootStateType, number>(state => state.project.countPipe)
+    const pricePipe = useSelector<AppRootStateType, number>(state => state.project.pricePipes)
+    const nameFix = useSelector<AppRootStateType, string>(state => state.project.fix.name)
+    const unitFix = useSelector<AppRootStateType, string>(state => state.project.fix.unit)
+    const countFix = useSelector<AppRootStateType, number>(state => state.project.countFix)
+    const priceFixes = useSelector<AppRootStateType, number>(state => state.project.priceFix)
+    const square = useSelector<AppRootStateType, number>(state => state.project.square)
+    const cellW = useSelector<AppRootStateType, number>(state => state.project.cellWidth)
+    const cellL = useSelector<AppRootStateType, number>(state => state.project.cellLength)
 
     return (
         <div className={s.resultBlock}>
@@ -41,7 +41,7 @@ export const Result = () =>{
                         {nameList}
                     </td>
                     <td className={s.unit}>
-                        {unitList}
+                        шт
                     </td>
                     <td className={s.countBody}>
                         {countList}

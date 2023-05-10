@@ -1,3 +1,5 @@
+import {PipeType} from "project/types";
+
 const InitialState = {
     pipe: {} as PipeType,
     countPipe: 0,
@@ -5,13 +7,7 @@ const InitialState = {
 }
 type InitialStateType = typeof InitialState
 
-export type PipeType = {
-    type: string,
-    name: string,
-    unit: string,
-    width: number,
-    price: number
-}
+
 export const pipeReducer = (state: InitialStateType = InitialState, action: ActionsType) => {
     switch (action.type) {
         case "SET_PIPE":
